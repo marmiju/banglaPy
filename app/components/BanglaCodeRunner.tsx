@@ -16,7 +16,7 @@ export default function BanglaCodeRunner() {
     setPythonCode("");
 
     try {
-      const res = await fetch("http://localhost:5000/toPython", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/toPython`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: banglaCode }),
