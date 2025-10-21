@@ -14,6 +14,7 @@ export default function BanglaCodeRunner() {
     setError("");
     setOutput("");
     setPythonCode("");
+    console.log("Running code:", process.env.NEXT_PUBLIC_BASE_URL);
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/toPython`, {
@@ -29,7 +30,7 @@ export default function BanglaCodeRunner() {
       setPythonCode(data.pythonCode || "");
       setOutput(data.output || "");
     } catch (err) {
-      console.error(err);
+      console.error("err",err);
       setError("Something went wrong while running the code.");
     }
 
