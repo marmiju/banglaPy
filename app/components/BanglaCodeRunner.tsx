@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
+import { saveLocalStorege } from "@/utilities/SaveCodeInLicalStore";
 
 export default function BanglaCodeRunner() {
   const [banglaCode, setBanglaCode] = useState("");
@@ -8,14 +9,17 @@ export default function BanglaCodeRunner() {
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [stderr, setstderr] = useState("");
 
   const runCode = async () => {
     setLoading(true);
     setError("");
+    setstderr("");
     setOutput("");
     setPythonCode("");
     console.log("Running code:", process.env.NEXT_PUBLIC_BASE_URL);
 
+    saveLocalStorege(banglaCode);
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/toPython`, {
         method: "POST",
@@ -24,17 +28,24 @@ export default function BanglaCodeRunner() {
       });
 
       const data = await res.json();
+      console.log("Response data:", data);
 
       if (!res.ok) throw new Error(data.error || "Server error");
 
       setPythonCode(data.pythonCode || "");
-      setOutput(data.output || "");
+      if (data.stderr) {
+        setstderr(data.stderr);
+        console.log("Stderr:", data.stderr);
+      }else{
+        setOutput(data.output || "No output");
+      }
+
     } catch (err) {
       console.error("err",err);
       setError("Something went wrong while running the code.");
-    }
-
+    }finally {
     setLoading(false);
+    }
   };
 
   return (
@@ -70,7 +81,7 @@ export default function BanglaCodeRunner() {
         {/* ---- Python Output Section ---- */}
         <div className="ml-0 md:ml-4 lg:ml-6 min-w-1/2 p-2">
         {/* python code */}
-        <div className="p-4">
+        <div className="p-4 max-h-64 overflow-y-auto">
           <h2 className="text-black px-2 bg-gray-200">
            converted python code:
           </h2>
@@ -80,12 +91,12 @@ export default function BanglaCodeRunner() {
         </div>
 
         {/* output */}
-        <div className="p-4">
-          <h2 className="text-black px-2 bg-gray-200">
+        <div className="p-4 max-h-64 overflow-y-auto">
+          <h2 className="text-black px-2  bg-gray-200">
            Output:
           </h2>
-          <pre className="bg-gray-100 min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap">
-            {output || error || "No output yet..."}
+          <pre className={`bg-gray-100 ${stderr ? 'bg-red-200':''}  min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap`}>
+            {stderr || output || "কোড রান করুন"}
           </pre>
         </div>
         </div>
