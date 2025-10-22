@@ -82,8 +82,8 @@ export default function BanglaCodeRunner() {
         <div className="ml-0 md:ml-4 lg:ml-6 min-w-1/2 p-2">
         {/* python code */}
         <div className="p-4 max-h-64 overflow-y-auto">
-          <h2 className="text-black px-2 bg-gray-200">
-           converted python code:
+          <h2 className="text-black px-2 bg-gray-200 flex justify-between">
+           <span>converted python code:</span><p className="bg-black/50 px-2 text-white">copy</p>
           </h2>
           <pre className="bg-gray-100 min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap">
             {pythonCode || "No output yet..."}
