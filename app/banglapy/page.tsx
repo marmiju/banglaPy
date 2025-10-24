@@ -23,7 +23,7 @@ const Banglapy = () => {
 
       {/* Sidebar Drawer */}
       <div
-        className={`fixed top-15 left-0 bottom-0  overflow-y-scroll w-64 bg-white shadow-xl z-40 transform transition-transform duration-500 ease-in-out
+        className={`fixed top-20 left-0 bottom-0  overflow-y-scroll w-64 bg-white shadow-xl z-40 transform transition-transform duration-500 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <Sidebar />

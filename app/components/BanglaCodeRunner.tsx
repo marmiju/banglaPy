@@ -63,7 +63,7 @@ export default function BanglaCodeRunner({input}:prpos) {
           <pre className="text-white bg-slate-600 "> .বাংলা</pre>
           <Editor
           className="border border-slate-400"
-          height={window.location.pathname == '/banglapy' ? '400px': '300px'}
+          height={"350px"}
             width={"400"}
             defaultLanguage="python"
             language="python"

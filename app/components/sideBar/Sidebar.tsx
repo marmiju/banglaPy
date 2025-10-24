@@ -24,7 +24,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="p-2">
+    <div className="p-2 ">
       {
         history?.map((code, index) => (
           <div key={index} className="p-2 m-2 border border-slate-300 rounded-lg shadow-sm bg-slate-500 relative group transition hover:shadow-md">

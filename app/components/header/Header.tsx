@@ -1,25 +1,29 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
 import { BiCross, BiMenu } from "react-icons/bi";
+import logo from '@/public/logo.png'
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
   const toggleMenu = () => setOpen(!open);
+  // bg-gradient-to-l 
 
   return (
-    <header className="w-full bg-gradient-to-l text-shadow-cyan-700-800 from-slate-900 backdrop-blur-sm text-white shadow-md sticky top-0 z-50">
+    <header className="w-full text-shadow-cyan-700-800 from-slate-900 backdrop-blur-sm text-white shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
         {/* Logo Section */}
         <div>
-          <h1 className="text-2xl font-bold text-indigo-200">সহজ.বাংলা</h1>
-          <p className="text-sm text-white">Your gateway to Bengali programming</p>
+          <Image width={50} height={50} src={logo.src} alt="suddho"/>
+          {/* <h1 className="text-2xl font-bold text-indigo-200">সহজ.বাংলা</h1>
+          <p className="text-sm text-white">Your gateway to Bengali programming</p> */}
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-6 text-gray-700 font-medium">
+        <nav className="hidden md:flex gap-6 text-white/80 font-medium">
           <Link href="/" className="hover:text-indigo-600 transition">হোম</Link>
           <Link href="/about" className="hover:text-indigo-600 transition">বিস্তারিত</Link>
           <Link href="/learn" className="hover:text-indigo-600 transition">শিখুন</Link>
