@@ -27,14 +27,14 @@ const Sidebar = () => {
     <div className="p-2">
       {
         history?.map((code, index) => (
-          <div key={index} className="p-4 m-2 border border-gray-300 rounded-lg shadow-sm bg-gray-50 relative group transition hover:shadow-md">
+          <div key={index} className="p-2 m-2 border border-slate-300 rounded-lg shadow-sm bg-slate-500 relative group transition hover:shadow-md">
             <button
               onClick={() => handleCopy(code, index)}
-              className="absolute top-2 right-2 text-sm px-2 py-1 rounded bg-gray-200 hover:bg-gray-300 transition"
+              className="absolute top-2 right-2 text-sm px-2 py-1 rounded bg-slate-600 cursor-pointer hover:bg-slate-800 transition"
             >
               {copiedIndex === index ? <MdFileCopy /> : <MdContentCopy />}
             </button>
-            <pre className="bg-gray-100 p-2 rounded overflow-x-auto whitespace-pre-wrap text-sm font-mono">
+            <pre className="bg-slate-600 p-2 max-h-20 overflow-ellipsis rounded overflow-x-auto whitespace-pre-wrap text-sm font-mono">
               {code}
             </pre>
           </div>

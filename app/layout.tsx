@@ -23,8 +23,7 @@ export default function RootLayout({
       <body
         className={`${tiro_Bangla.className} antialiased`}
       >
-        {/* <Header>
-        </Header> */}
+        <Header />
         {children}
       </body>
     </html>

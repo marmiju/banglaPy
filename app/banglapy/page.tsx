@@ -12,11 +12,11 @@ const Banglapy = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-white overflow-hidden">
+    <div className="relative min-h-screen bg-slate-200 overflow-hidden">
       {/* Toggle Button */}
       <button
         onClick={handleToggle}
-        className="fixed top-4 left-4 z-50 border text-2xl p-2 rounded border-gray-400 bg-white shadow-md cursor-pointer hover:scale-110 transition-transform duration-300"
+        className="fixed top-4 left-4 z-50 border text-2xl p-2 rounded border-slate-400 bg-white shadow-md cursor-pointer hover:scale-110 transition-transform duration-300"
       >
         {isOpen ? <RiAlignItemRightFill /> : <RiAlignItemLeftFill />}
       </button>
