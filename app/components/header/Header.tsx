@@ -13,7 +13,7 @@ const Header = () => {
   // bg-gradient-to-l 
 
   return (
-    <header className="w-full text-shadow-cyan-700-800 from-slate-900 backdrop-blur-sm text-white shadow-md sticky top-0 z-50">
+    <header className="w-full text-shadow-cyan-700-800 bg-white/40 from-slate-900 backdrop-blur-sm text-white shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
         {/* Logo Section */}
         <div>

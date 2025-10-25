@@ -3,11 +3,11 @@ import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import { saveLocalStorege } from "@/utilities/SaveCodeInLicalStore";
 
-interface prpos{
+interface prpos {
   input?: string
 }
 
-export default function BanglaCodeRunner({input}:prpos) {
+export default function BanglaCodeRunner({ input }: prpos) {
   const [banglaCode, setBanglaCode] = useState(input);
   const [pythonCode, setPythonCode] = useState("");
   const [output, setOutput] = useState("");
@@ -40,30 +40,30 @@ export default function BanglaCodeRunner({input}:prpos) {
       if (data.stderr) {
         setstderr(data.stderr);
         console.log("Stderr:", data.stderr);
-      }else{
+      } else {
         setOutput(data.output || "No output");
       }
 
     } catch (err) {
-      console.error("err",err);
+      console.error("err", err);
       setError("Something went wrong while running the code.");
-    }finally {
-    setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className=" p-0  text-black/80 flex flex-col items-center max-w-[1280px] mx-auto">
+    <div className=" p-0  text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
 
-      <div className="w-full flex  flex-col md:flex-row   rounded-xl p-2 gap-4">
-        
+      
+
         {/* ---- Code Editor ---- */}
-        <div className=" min-w-1/2 flex flex-col rounded-lg overflow-hidden">
-          
+        <div className=" min-w-1/2 w-full flex flex-col rounded-lg overflow-hidden">
+
           <pre className="text-white bg-slate-600 "> .বাংলা</pre>
           <Editor
-          className="border border-slate-400"
-          height={"350px"}
+            className="border border-slate-400"
+            height={"350px"}
             width={"400"}
             defaultLanguage="python"
             language="python"
@@ -78,36 +78,33 @@ export default function BanglaCodeRunner({input}:prpos) {
             }}
           />
           {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-           <button disabled={loading} onClick={runCode} className="bg-gradient-to-br from-purple-700 to-cyan-600 text-white px-4 py-2">Run Code</button>
+          <button disabled={loading} onClick={runCode} className="bg-gradient-to-br from-purple-700 to-cyan-600 text-white px-4 py-2">Run Code</button>
         </div>
 
-        {/* ---- Python Output Section ---- */}
-        <div className=" min-w-1/2 border bg-slate-800 rounded text-white">
-        {/* python code */}
-        <div className="p-4 max-h-64 ">
-          <h2 className=" px-2 bg-gray-700 flex justify-between">
-           <span>converted python code:</span><p className="bg-black/50 px-2 text-white">copy</p>
-          </h2>
-          <pre className="bg-gray-600 min-h-40 max-h-52 text-sm p-3 rounded overflow-y-auto whitespace-pre-wrap">
-            {pythonCode || "No output yet..."}
-          </pre>
-        </div>
+        {/* ---- Python and  Output Section ---- */}
+        <div className="flex-col  w-full border bg-slate-800 rounded text-white p-4 space-y-4">
+          {/* python code */}
+          <div className=" max-h-64 w-full ">
+            <h2 className=" px-2 w-full bg-gray-700 flex justify-between">
+              <span>পাইথন কোড:</span><p className="bg-black/50 px-2 text-white">copy</p>
+            </h2>
+            <pre className="bg-gray-600 min-h-40 max-h-52 text-sm p-3 rounded overflow-y-auto whitespace-pre-wrap">
+              {pythonCode || "No output yet..."}
+            </pre>
+          </div>
 
-        {/* output */}
-        <div className="p-4 max-h-64 overflow-y-auto">
-          <h2 className="bg-slate-700 px-2  text-gray-200">
-           Output:
-          </h2>
-          <pre className={`bg-slate-600 ${stderr ? 'bg-red-200':''}  min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap`}>
-            {stderr || output || "কোড রান করুন"}
-          </pre>
+          {/* output */}
+          <div className="">
+            <h2 className="">
+              রেজাল্ট:
+            </h2>
+            <pre className={`bg-slate-600 ${stderr ? 'bg-red-200' : ''}  min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap`}>
+              {stderr || output || "কোড রান করুন"}
+            </pre>
+          </div>
         </div>
-        </div>
-      </div>
+     
 
-      <footer className="text-gray-500 text-sm mt-6">
-        Made with ❤️ in Bangladesh
-      </footer>
     </div>
   );
 }
