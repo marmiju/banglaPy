@@ -18,3 +18,145 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* for markdown */
+
+/* ================================
+   📘 Markdown / Rich Text Styling
+   ================================ */
+
+.markdown-body {
+  color: #e5e7eb; /* Tailwind text-gray-200 */
+  line-height: 1.7;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+/* Headings */
+.markdown-body h1 {
+  font-size: 2rem; /* text-3xl */
+  font-weight: 700;
+  margin: 1.2em 0 0.6em;
+  color: #ffffff;
+  border-bottom: 1px solid #374151; /* gray-700 */
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600;
+  margin: 1em 0 0.5em;
+  color: #f3f4f6; /* gray-100 */
+}
+
+.markdown-body h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  margin: 0.8em 0 0.4em;
+  color: #f9fafb;
+}
+
+/* Paragraphs */
+.markdown-body p {
+  margin: 0.75em 0;
+  color: #e5e7eb;
+}
+
+/* Lists */
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0.8em 0 0.8em 1.5em;
+  padding-left: 1.2em;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body li {
+  margin: 0.3em 0;
+}
+
+/* Code blocks */
+.markdown-body pre {
+  background: #1e293b; /* slate-800 */
+  padding: 0.75em 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin: 1em 0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: #d1d5db;
+}
+
+.markdown-body code {
+  background: #334155; /* slate-700 */
+  color: #facc15; /* yellow-400 */
+  padding: 0.15em 0.35em;
+  border-radius: 0.25em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Links */
+.markdown-body a {
+  color: #3b82f6; /* blue-500 */
+  text-decoration: underline;
+}
+
+.markdown-body a:hover {
+  color: #60a5fa; /* blue-400 */
+}
+
+/* Images */
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 0.5em;
+  margin: 1em 0;
+}
+
+/* Blockquotes */
+.markdown-body blockquote {
+  border-left: 4px solid #475569; /* slate-600 */
+  padding-left: 1em;
+  color: #d1d5db;
+  margin: 1em 0;
+  font-style: italic;
+  background: rgba(71, 85, 105, 0.2);
+  border-radius: 0.25em;
+}
+
+/* Horizontal line */
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid #374151; /* gray-700 */
+  margin: 2em 0;
+}
+
+/* Tables */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #475569; /* slate-600 */
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.markdown-body th {
+  background: #334155; /* slate-700 */
+  font-weight: 600;
+}
+
+.markdown-body tr:nth-child(even) {
+  background: #1e293b; /* slate-800 */
+}
+
