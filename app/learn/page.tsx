@@ -7,7 +7,7 @@ const page = () => {
     <div className='max-w-6xl mx-auto p-2'>
       {
         resources.map((res,index)=>(
-          <LWV key={index}  explaination={res.desc} source={res.source} code={res.code} />
+          <LWV key={index}  explaination={res.desc} source={res.source} code={res.code} quiz={res.quiz!}  />
         ))
       }
         
