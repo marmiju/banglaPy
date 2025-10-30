@@ -162,6 +162,10 @@ body {
   font-size: 0.95rem;
 }
 
+/* *{
+  border: 1px solid white;
+} */
+
 .markdown-body th {
   background: #1e293b; /* slate-800 */
   font-weight: 700;

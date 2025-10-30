@@ -20,6 +20,7 @@ const LWV = ({ source, code, explaination, quiz }: props) => {
   return (
     <div>
       <Markdown content={explaination}/>
+       {quiz && <QuizSection quiz={quiz} />} 
 
       <div className='flex flex-col md:flex-row mt-4 gap-2'>
         <Suspense fallback={<div>Waiting for Video</div>}>
@@ -33,8 +34,6 @@ const LWV = ({ source, code, explaination, quiz }: props) => {
         </Suspense>
         {code && <BanglaCodeRunner input={code} />}
       </div>
-
-      {quiz && <QuizSection quiz={quiz} />} {/* 👈 এখানে quiz যুক্ত করো */}
     </div>
   )
 }

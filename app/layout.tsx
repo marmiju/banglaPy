@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
+import bg from '@/public/bg.png'
 
 const tiro_Bangla = Tiro_Bangla({
- weight: "400" 
+  weight: "400"
 });
 
 
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${tiro_Bangla.className} antialiased`}
+        className={`${tiro_Bangla.className} antialiased  `}
       >
         <Header />
         {children}

@@ -13,7 +13,7 @@ const Header = () => {
   // bg-gradient-to-l 
 
   return (
-    <header className="w-full text-shadow-cyan-700-800 bg-white/40 from-slate-900 backdrop-blur-sm text-white shadow-md sticky top-0 z-50">
+    <header className="w-full sticky text-shadow-cyan-700-800 bg-white/40 from-slate-900 backdrop-blur-sm text-white shadow-md  top-0 z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
         {/* Logo Section */}
         <div>
@@ -27,6 +27,7 @@ const Header = () => {
           <Link href="/" className="hover:text-indigo-600 transition">হোম</Link>
           <Link href="/about" className="hover:text-indigo-600 transition">বিস্তারিত</Link>
           <Link href="/learn" className="hover:text-indigo-600 transition">শিখুন</Link>
+          <Link href="/game" className="hover:text-indigo-600 transition">গেম</Link>
         </nav>
 
         {/* Mobile Menu Button */}

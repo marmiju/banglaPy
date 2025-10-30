@@ -54,9 +54,6 @@ export default function BanglaCodeRunner({ input }: prpos) {
 
   return (
     <div className=" p-0  text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
-
-      
-
         {/* ---- Code Editor ---- */}
         <div className=" min-w-1/2 w-full flex flex-col rounded-lg overflow-hidden">
 
