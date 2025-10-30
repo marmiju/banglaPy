@@ -5,7 +5,7 @@ import VariableBoxGame from "../components/games/VariableBoxGame";
 import bg from '@/public/bg.png'
 
 export default function KidsCodingGames() {
-    const games = [<VariableBoxGame />, <RobotGame />];
+    const games = [<VariableBoxGame key="variable-box" />, <RobotGame key={'robot-game'}/>]
     const [gameIndex, setGameIndex] = useState(0);
 
     return (
