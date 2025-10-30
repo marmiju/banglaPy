@@ -11,7 +11,7 @@ export default function RobotGame() {
 
   const runCode = () => {
     const lines = commands.split('\n').map(l => l.trim());
-    let pos = { ...robotPos };
+    const pos = { ...robotPos };
     const newLog: string[] = [];
 
     for (let line of lines) {

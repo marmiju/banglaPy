@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Tiro_Bangla } from "next/font/google";
+import {  Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
-import bg from '@/public/bg.png'
+
 
 const tiro_Bangla = Tiro_Bangla({
   weight: "400"

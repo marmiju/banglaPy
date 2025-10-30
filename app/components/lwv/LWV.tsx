@@ -2,10 +2,8 @@
 import React, { Suspense } from 'react'
 import BanglaCodeRunner from '../BanglaCodeRunner'
 
-import ReactMarkdown from 'react-markdown';
 import { Quiz } from '@/public/data/teching';
 import QuizSection from '../quiz/QuizSection';
-import remarkGfm from 'remark-gfm';
 import Markdown from '../markdown/Markdown';
 
 interface props {
