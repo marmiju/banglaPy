@@ -54,7 +54,7 @@ export default function RobotGame() {
         })}
       </div>
 
-      {/* কমান্ড ইনপুট */}
+
       <textarea
         className="w-full h-32 border rounded p-2 mb-2 text-sm font-mono"
         placeholder={`লিখো কমান্ড:\nআগাও()\nনিচে()\nনিচে()\nআগাও()`}
@@ -69,7 +69,7 @@ export default function RobotGame() {
         ▶️ রান করো
       </button>
 
-      {/* আউটপুট লগ */}
+
       <div className="mt-3 text-left bg-slate-400 text-black border rounded p-2 font-mono">
         {log.map((l, i) => (
           <div key={i}>{l}</div>

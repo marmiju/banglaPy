@@ -20,7 +20,7 @@ const VariableBoxGame: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col font-bold text-center pt-2 text-black bg-white/50 p-4 backdrop-blur-2xl  justify-center items-center text-2xl min-h-[75vh]">
+    <div className="flex flex-col font-bold text-center pt-2  bg-white/50 p-4 backdrop-blur-2xl text-purple-600 justify-center items-center text-2xl min-h-[75vh]">
       <p>বাক্সে মান রাখো, <br/> তারপর  জাদু  করে দেখাও!</p>
 
       <div className="w-44 h-44  backdrop-blur-3xl text items-center border border-white bg-purple-600 justify-center flex text-4xl"
