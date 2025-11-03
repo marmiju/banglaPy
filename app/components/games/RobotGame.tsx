@@ -14,7 +14,7 @@ export default function RobotGame() {
     const pos = { ...robotPos };
     const newLog: string[] = [];
 
-    for (let line of lines) {
+    for (const line of lines) {
       if (line === 'আগাও()' && pos.x < size - 1) pos.x++;
       else if (line === 'পিছাও()' && pos.x > 0) pos.x--;
       else if (line === 'উপরে()' && pos.y > 0) pos.y--;

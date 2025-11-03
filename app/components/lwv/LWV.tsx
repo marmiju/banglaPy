@@ -30,7 +30,7 @@ const LWV = ({ source, code, explaination, quiz }: props) => {
             ></iframe>
           )}
         </Suspense>
-        {code && <BanglaCodeRunner input={code} />}
+        {code && <BanglaCodeRunner src_code={code} />}
       </div>
     </div>
   )

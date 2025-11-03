@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {  Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
+import FooterSec from "./components/footer/FooterSec";
 
 
 const tiro_Bangla = Tiro_Bangla({
@@ -26,6 +27,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <FooterSec/>
       </body>
     </html>
   );

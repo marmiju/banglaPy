@@ -146,7 +146,6 @@ body {
   border-collapse: collapse;
   margin: 1.5em 0;
   /* background: #0f172a; slate-900 */
-  border-radius: 0.5em;
   overflow: hidden;
   display: block;
   overflow-x: auto; /* Responsive for small screens */
@@ -154,7 +153,7 @@ body {
 
 .markdown-body th,
 .markdown-body td {
-  border: 1px solid #475569; /* slate-600 */
+  border: 1px solid #ffffff; /* slate-600  475569* / 
   padding: 0.75em 3em;
   text-align: left;
   vertical-align: middle;
