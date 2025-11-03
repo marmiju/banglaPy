@@ -23,9 +23,10 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
     setOutput("");
     setPythonCode("");
     console.log("Running code:", process.env.NEXT_PUBLIC_BASE_URL);
-
-    saveLocalStorege(banglaCode!);
+    
     try {
+      saveLocalStorege(banglaCode!);
+    
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/toPython`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,7 +55,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
   };
 
   return (
-    <div className=" p-0  text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
+    <div className=" p-0 my-4 mb-20 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
       {/* ---- Code Editor ---- */}
       <div className=" min-w-1/2 w-full flex flex-col rounded-lg overflow-hidden">
 

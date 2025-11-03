@@ -6,7 +6,7 @@ import { Problem } from '@/public/data/problems'
 const ProblemSec = ({problem}:{problem:Problem}) => {
   return (
      <div className='pt-4  p-4'>
-        <h3 className='text-2xl font-bold w-full text-center'>{problem.title}</h3>
+        <h3 className='text-2xl font-bold w-full border-b'>{problem.title}</h3>
          <Markdown content={problem.description}/>
       </div>
   )
