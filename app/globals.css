@@ -85,7 +85,7 @@ body {
 
 /* Code blocks */
 .markdown-body pre {
-  background: #1e293b; /* slate-800 */
+  background: #1e293b; 
   padding: 0.75em 1em;
   border-radius: 0.5em;
   overflow-x: auto;
@@ -95,8 +95,7 @@ body {
 }
 
 .markdown-body code {
-  background: #334155; /* slate-700 */
-  color: #f9fff9;
+  color: #f7f7fa;
   padding: 0.15em 0.35em;
   border-radius: 0.25em;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;

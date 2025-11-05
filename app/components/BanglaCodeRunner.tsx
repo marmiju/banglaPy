@@ -16,6 +16,8 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
   const [error, setError] = useState("");
   const [stderr, setstderr] = useState("");
 
+  const [copied, setCopied] = useState(false)
+
   const runCode = async () => {
     setLoading(true);
     setError("");
@@ -24,6 +26,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
     setPythonCode("");
     console.log("Running code:", process.env.NEXT_PUBLIC_BASE_URL);
     
+
     try {
       saveLocalStorege(banglaCode!);
     
@@ -54,6 +57,16 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
     }
   };
 
+  const handleCopy = async (code: string) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500); // reset after 1.5s
+    } catch (err) {
+      console.error('Failed to copy code:', err);
+    }
+  };
+
   return (
     <div className=" p-0 my-4 mb-20 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
       {/* ---- Code Editor ---- */}
@@ -78,7 +91,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
         />
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
         {
-          loading ? <div className="text-center text-black bg-white/80  p-2">loading Please Wait</div>
+          loading ? <div className="text-center text-black bg-white/80  p-2">আপেক্ষা করুন</div>
           : <button disabled={loading} onClick={runCode} className={`bg-gradient-to-br bg-white text-black px-4 cursor-pointer py-2 `}>কোড রান করুন</button>
         }
       </div>
@@ -88,7 +101,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
         {/* python code */}
         <div className=" max-h-64 w-full ">
           <h2 className=" px-2 w-full bg-gray-700 flex justify-between">
-            <span>পাইথন কোড:</span><p className="bg-black/50 px-2 text-white">copy</p>
+            <span>পাইথন কোড:</span><button onClick={()=>handleCopy(pythonCode )} className="bg-black/50 px-2 cursor-pointer text-white">{ copied ? 'কপি হয়েছে': `কপি করুন`}</button>
           </h2>
           <pre className="bg-gray-600 min-h-40 max-h-52 text-sm p-3 rounded overflow-y-auto whitespace-pre-wrap">
             {pythonCode || "No output yet..."}
