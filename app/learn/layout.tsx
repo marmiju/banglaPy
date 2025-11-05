@@ -27,7 +27,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* ---- Sidebar / Drawer (Fixed) ---- */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-64 border-r border-slate-500 backdrop-blur-2xl  p-4 overflow-y-auto z-40
+          fixed top-15 left-0 h-full w-64 border-r border-slate-500 backdrop-blur-2xl  p-4 overflow-y-auto z-40
           transform transition-transform duration-300 ease-in-out
           ${open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
         `}
@@ -49,7 +49,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* ---- Content Wrapper (Scrollable) ---- */}
-      <div className="lg:ml-64 p-4 min-h-screen">
+      <div className="lg:ml-64 sticky top-40 min-h-screen">
         {children}
       </div>
 

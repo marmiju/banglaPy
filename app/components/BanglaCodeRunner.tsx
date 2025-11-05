@@ -25,11 +25,13 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
     setOutput("");
     setPythonCode("");
     console.log("Running code:", process.env.NEXT_PUBLIC_BASE_URL);
-    
+
 
     try {
-      saveLocalStorege(banglaCode!);
-    
+
+      if (!banglaCode) return
+
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/toPython`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,10 +39,9 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
       });
 
       const data = await res.json();
-      console.log("Response data:", data);
 
       if (!res.ok) throw new Error(data.error || "Server error");
-
+      saveLocalStorege(banglaCode!);
       setPythonCode(data.pythonCode || "");
       if (data.stderr) {
         setstderr(data.stderr);
@@ -51,7 +52,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
 
     } catch (err) {
       console.error("err", err);
-      setError("Something went wrong while running the code.");
+      setError("মনে হচ্ছে কিছু সমস্যা আছে");
     } finally {
       setLoading(false);
     }
@@ -68,14 +69,14 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
   };
 
   return (
-    <div className=" p-0 my-4 mb-20 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
+    <div className=" p-0  mb-20 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
       {/* ---- Code Editor ---- */}
       <div className=" min-w-1/2 w-full flex flex-col rounded-lg overflow-hidden">
 
         <pre className="text-white bg-slate-600 "> .বাংলা</pre>
         <Editor
           className="border border-slate-400"
-          height={"350px"}
+          height={"300px"}
           width={"400"}
           defaultLanguage="python"
           language="python"
@@ -89,19 +90,19 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
             automaticLayout: true,
           }}
         />
-        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+        {error && <p className="text-red-500 text-center bg-slate-300 z-10 mt-[-10px]">{error}</p>}
         {
           loading ? <div className="text-center text-black bg-white/80  p-2">আপেক্ষা করুন</div>
-          : <button disabled={loading} onClick={runCode} className={`bg-gradient-to-br bg-white text-black px-4 cursor-pointer py-2 `}>কোড রান করুন</button>
+            : <button disabled={loading} onClick={runCode} className={`bg-gradient-to-br bg-white text-black px-4 cursor-pointer py-2 `}>কোড রান করুন</button>
         }
       </div>
 
       {/* ---- Python and  Output SeCtion ---- */}
-      <div className="flex-col  w-full border bg-slate-800 rounded text-white p-4 space-y-4">
+      <div className="flex-col  w-full  rounded bg-slate-900 p-1 text-white  space-y-4">
         {/* python code */}
         <div className=" max-h-64 w-full ">
           <h2 className=" px-2 w-full bg-gray-700 flex justify-between">
-            <span>পাইথন কোড:</span><button onClick={()=>handleCopy(pythonCode )} className="bg-black/50 px-2 cursor-pointer text-white">{ copied ? 'কপি হয়েছে': `কপি করুন`}</button>
+            <span>পাইথন কোড:</span><button onClick={() => handleCopy(pythonCode)} className="bg-black/50 px-2 cursor-pointer text-white">{copied ? 'কপি হয়েছে' : `কপি করুন`}</button>
           </h2>
           <pre className="bg-gray-600 min-h-40 max-h-52 text-sm p-3 rounded overflow-y-auto whitespace-pre-wrap">
             {pythonCode || "No output yet..."}
@@ -113,9 +114,9 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
           <h2 className="">
             রেজাল্ট:
           </h2>
-          <pre className={`bg-slate-600 ${stderr ? 'bg-red-200' : ''}  min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap`}>
+          <p className={`bg-slate-600 ${stderr ? 'bg-red-200' : ''}  min-h-20 text-sm p-3 rounded overflow-x-auto whitespace-pre-wrap`}>
             {stderr || output || "কোড রান করুন"}
-          </pre>
+          </p>
         </div>
       </div>
 

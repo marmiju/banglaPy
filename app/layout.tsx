@@ -3,6 +3,7 @@ import {  Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
 import FooterSec from "./components/footer/FooterSec";
+import FloatingButton from "./components/floatingButton/FloatingButton";
 
 
 const tiro_Bangla = Tiro_Bangla({
@@ -26,6 +27,7 @@ export default function RootLayout({
         className={`${tiro_Bangla.className} antialiased  `}
       >
         <Header />
+        <FloatingButton/>
         {children}
         <FooterSec/>
       </body>

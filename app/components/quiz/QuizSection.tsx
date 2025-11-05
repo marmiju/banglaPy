@@ -23,7 +23,6 @@ const QuizSection = ({ quiz }: { quiz: Quiz[] }) => {
 
   return (
     <div className="mt-6 bg-slate-900 text-white p-4 rounded-2xl shadow">
-      <h3 className="text-xl font-semibold mb-4">🧩 কুইজ</h3>
       {quiz.map((q, i) => (
         <div key={i} className="mb-4">
           <p className="font-medium mb-2">{i + 1}. {q.question}</p>

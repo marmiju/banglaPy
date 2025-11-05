@@ -2,7 +2,6 @@
 import React, { useState } from "react"
 import LWV from "../components/lwv/LWV"
 import { resources } from "@/public/data/teching"
-import Link from "next/link"
 
 const Page = () => {
 
