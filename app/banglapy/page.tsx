@@ -33,10 +33,10 @@ const Banglapy = () => {
       <div
         className={`p-4 lg:p-16  transition-all duration-500 ${isOpen ? 'ml-64' : 'ml-0'}`}
       >
-        <BanglaCodeRunner />
+        <BanglaCodeRunner  height='400px'/>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default Banglapy;
