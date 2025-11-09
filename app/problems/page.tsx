@@ -1,6 +1,5 @@
 import React from 'react'
-import BanglaCodeRunner from '../components/BanglaCodeRunner'
-import ProblemSec from '../components/problemSec/ProblemSec'
+
 import { Problem_res } from '@/public/data/problems'
 import Link from 'next/link'
 
