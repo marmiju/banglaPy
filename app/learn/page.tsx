@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import React from "react"
 import LWV from "../components/lwv/LWV"
 import { resources } from "@/public/data/teching"
 

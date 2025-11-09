@@ -20,12 +20,12 @@ export default function Home() {
         <div className="space-x-4">
           <Link href={'/banglapy'} className="bg-purple-600 text-white px-4 py-2"> প্রাকটিস করুন</Link>
           <Link
-            href="https://github.com/marmiju/banglaPy"
+            href="/auth/login"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-slate-200 text-purple-600 px-4 py-2"
           >
-            গিটহাব
+            লগইন
           </Link>
 
         </div>

@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
-import { saveLocalStorege } from "@/utilities/SaveCodeInLicalStore";
+import { saveLocalStorege } from "@/utils/SaveCodeInLicalStore";
 
 interface prpos {
   src_code?: string
   std_input?: string
+  height?: string
 }
 
-export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
+export default function BanglaCodeRunner({ src_code, std_input, height }: prpos) {
   const [banglaCode, setBanglaCode] = useState(src_code);
   const [pythonCode, setPythonCode] = useState("");
   const [output, setOutput] = useState("");
@@ -76,7 +77,7 @@ export default function BanglaCodeRunner({ src_code, std_input }: prpos) {
         <pre className="text-white bg-slate-600 "> .বাংলা</pre>
         <Editor
           className="border border-slate-400"
-          height={"300px"}
+          height={height|| '300px'}
           width={"400"}
           defaultLanguage="python"
           language="python"
