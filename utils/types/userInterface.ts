@@ -1,5 +1,5 @@
 export interface UserType {
-    id: number,
+    id: string,
     googleId: string,
     email: string,
     username: string,

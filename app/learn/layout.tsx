@@ -2,6 +2,7 @@
 import { resources } from '@/public/data/teching';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import FloatingButton from '../components/floatingButton/FloatingButton';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* ---- Content Wrapper (Scrollable) ---- */}
       <div className="lg:ml-64 sticky top-40 min-h-screen">
+        <FloatingButton/>
+          
         {children}
       </div>
 

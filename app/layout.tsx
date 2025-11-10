@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import {  Tiro_Bangla } from "next/font/google";
+import { Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
 import FooterSec from "./components/footer/FooterSec";
-import FloatingButton from "./components/floatingButton/FloatingButton";
+import UserProvider from "./components/hooks/provider/ContextApi";
 
 
 const tiro_Bangla = Tiro_Bangla({
@@ -26,10 +26,13 @@ export default function RootLayout({
       <body
         className={`${tiro_Bangla.className} antialiased  `}
       >
-        <Header />
-        <FloatingButton/>
-        {children}
-        <FooterSec/>
+
+        <UserProvider >
+          <Header />
+        
+          {children}
+          <FooterSec />
+        </UserProvider>
       </body>
     </html>
   );
