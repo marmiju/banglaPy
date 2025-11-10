@@ -78,7 +78,7 @@ const Header = () => {
           <Link href={'/profile'}>
             <Image
               className="   bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
-              src={user?.profile_picture! || logo2.src} alt="profilephoto" height={32} width={32} />
+              src={user?.profile_picture || logo2.src} alt="profilephoto" height={32} width={32} />
           </Link>
         </div>
       </div>

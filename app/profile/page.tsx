@@ -1,11 +1,8 @@
 'use client'
 
-import { UserType } from '@/utils/types/userInterface'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import logo from '@/public/logo2.png'
 import LoginUi from '../components/authentication/LoginUi'
-import { redirect } from 'next/navigation'
 import { useUserContext } from '../components/hooks/provider/ContextApi'
 import LogOutBtn from '../components/authentication/LogOutBtn'
 
