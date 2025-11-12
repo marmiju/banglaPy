@@ -1,19 +1,25 @@
 import React from 'react'
 
-import { Problem_res } from '@/public/data/problems'
 import Link from 'next/link'
+import { getProblems } from '@/utils/functions/getProblems'
 
-const page = () => {
-    const problem = Problem_res
+const page = async () => {
+    // const problem = Problem_res
+
+    const problems = await getProblems()
+    console.log("problems in page:", problems);
+
+
     return (
-        <div className='max-w-[90%] mx-auto'>
-            <p className='text-2xl'>{`সমস্যার তালিকাঃ`}</p>
+        <div className='max-w-[90%] mx-auto  flex flex-col'>
+            <p className='text-2xl my-6'>{`সমস্যার তালিকাঃ`}</p>
             {
-                problem.map((prob,index)=> {
-                    return <div key={prob.title} className='m-4'>
-                        <Link href={`problems/${index}`}
+                problems.map((prob, index) => {
+                    return <div key={prob.title} className=''>
+                        <Link className={`flex justify-between  hover:bg-slate-800  w-full px-4 py-2  text-white ${index % 2 == 0 ? 'bg-slate-600' : 'bg-slate-700'}`} href={`problems/${prob.id}`}
                         >
-                        <p  className='bg-white rounded w-full p-2 text-black'> {prob.title}</p>
+                            <p className=''> {prob.title}</p>
+                            <p className='text-sm text-gray-500'>{prob.submissions?.length}</p>
                         </Link>
                     </div>
                 })
@@ -23,6 +29,3 @@ const page = () => {
 }
 
 export default page
-
-{/* <ProblemSec problem={prob} />
-                        <BanglaCodeRunner std_input={String(prob.sample.input)}/> */}

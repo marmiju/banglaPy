@@ -29,7 +29,6 @@ export default function RootLayout({
 
         <UserProvider >
           <Header />
-        
           {children}
           <FooterSec />
         </UserProvider>

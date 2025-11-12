@@ -17,7 +17,7 @@ const ProfilePage = () => {
       {!user ? (
         <LoginUi />
       ) : (
-        <div className='flex flex-col md:flex-row max-w-[1200px] mx-auto gap-4 p-2 justify-center items-center'>
+        <div className='flex flex-col md:flex-row max-w-[1200px] mx-auto gap-4 p-2 justify-center md:justify-start items-center '>
           <Image
             className="w-16 md:w-22 h-16 md:h-22 rounded-full"
             src={user.profile_picture || logo.src}
