@@ -36,19 +36,19 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
     try {
       if (!user) return setError("প্রথমে লগইন করুন")
 
-      if (!banglaCode) return
+      if (!banglaCode || !problem || !problem.id) return
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submitcode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: banglaCode, input: problem?.sampleInput, userId: user.id, problemId: problem?.id }),
       });
 
-      
+
 
       const data = await res.json();
       if (data.isCorrect) {
-        toast.success(data.msg, );
-      }else{
+        toast.success(data.msg,);
+      } else {
         toast.error(data.msg);
       }
 
@@ -148,7 +148,7 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
           loading ? <div className="text-center text-black bg-white/80  p-2">আপেক্ষা করুন</div>
             : <div className="w-full flex flex-col md:flex-row ">
               <button disabled={loading} onClick={runCode} className={`bg-gradient-to-br w-full bg-white text-black px-4 cursor-pointer py-2 `}>কোড রান করুন</button>
-              {window.location.pathname.startsWith('/problems') && <button disabled={loading} onClick={submitcode} className={`bg-gradient-to-br w-full bg-green-600 text-white px-4 cursor-pointer py-2 `}>সাবমিট করুন</button>}
+             {problem && <button disabled={loading} onClick={submitcode} className={`bg-gradient-to-br w-full bg-green-600 text-white px-4 cursor-pointer py-2 `}>সাবমিট করুন</button>}
 
             </div>
         }
