@@ -3,14 +3,15 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getProblems } from "@/utils/functions/getProblems";
+import { Submission } from "@/utils/types/userInterface";
 
 interface Problem {
     id: string;
     title: string;
-    submissions?: any[];
+    submissions?:Submission[];
 }
 
-const page = () => {
+const ProblemsPage = () => {
     const [problems, setProblems] = useState<Problem[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -48,4 +49,4 @@ const page = () => {
     );
 }
 
-export default page
+export default ProblemsPage
