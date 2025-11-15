@@ -4,6 +4,7 @@ export interface UserType {
     email: string,
     username: string,
     profile_picture: string
+    submissions?: Submission[];
 }
 
 export interface Problem {
@@ -28,3 +29,14 @@ export interface Submission {
   score: number;
   userId: string;
 }
+
+export interface Score {
+  id: string;
+  userId: string;
+  totalScore: number;
+  solvedCount: number;
+  lastUpdated: string;
+  user?: UserType
+}
+
+

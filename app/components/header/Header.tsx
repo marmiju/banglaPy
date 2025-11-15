@@ -55,6 +55,7 @@ const Header = () => {
           <Link href="/learn" className="hover:text-blue-200 transition">শিখুন</Link>
           <Link href="/game" className="hover:text-blue-200 transition">গেম</Link>
           <Link href="/problems" className="hover:text-blue-200 transition">চ্যালেঞ্জ</Link>
+          <Link href="/ranking" className="hover:text-blue-200 transition">লিডারবোর্ড</Link>
           <Link href={'/profile'}>
             {/* profile */}
             <Image
@@ -93,6 +94,7 @@ const Header = () => {
             <Link href="/learn" onClick={() => setOpen(false)} className="hover:text-indigo-600 transition">শিখুন</Link>
             <Link href="/game" onClick={() => setOpen(false)} className="hover:text-indigo-600 transition">গেম</Link>
             <Link href="/problems" onClick={() => setOpen(false)} className="hover:text-indigo-600 transition">চ্যালেঞ্জ</Link>
+            <Link href="/ranking" onClick={() => setOpen(false)} className="hover:text-indigo-600 transition">লিডারবোর্ড</Link>
           </nav>
         </div>
 
