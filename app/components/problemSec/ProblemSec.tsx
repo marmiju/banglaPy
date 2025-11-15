@@ -4,6 +4,7 @@ import { Problem } from '@/utils/types/userInterface'
 
 
 const ProblemSec = ({ problem }: { problem: Problem }) => {
+   console.log(problem);
    return (
 
       <div className='pt-4  p-4'>

@@ -39,6 +39,7 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
       if (!banglaCode || !problem || !problem.id) return
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submitcode`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: banglaCode, input: problem?.sampleInput, userId: user.id, problemId: problem?.id }),
       });
@@ -121,7 +122,7 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
   };
 
   return (
-    <div className=" p-0  mb-20 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
+    <div className=" p-0  mb-10 text-black/80  flex flex-col lg:flex-row gap-4  w-full max-w-[1280px] mx-auto">
       <ToastContainer />
       {/* ---- Code Editor ---- */}
       <div className=" min-w-1/2 w-full flex flex-col rounded-lg overflow-hidden">

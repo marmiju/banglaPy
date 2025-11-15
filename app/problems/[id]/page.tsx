@@ -1,27 +1,16 @@
-import BanglaCodeRunner from "@/app/components/BanglaCodeRunner";
-import ProblemSec from "@/app/components/problemSec/ProblemSec";
+// Server Component
+import ProblemPage from "@/app/components/clientPages/problem";
 import { getProblem } from "@/utils/functions/GetProblem";
-import { Suspense } from "react";
 
 interface Props {
-    params: { id: string }
+  params: { id: string };
 }
 
 const Page = async ({ params }: Props) => {
-    const { id } = params
+    const { id } = params;
 
-    const problem = await getProblem({ id })
 
-    return (
-        <Suspense fallback={<p className="text-center py-10 text-gray-400">Loading...</p>}>
-
-            <div className="max-w-[1280px] mx-auto">
-
-                <ProblemSec problem={problem} />
-                <BanglaCodeRunner problem={problem} />
-            </div>
-        </Suspense>
-    )
-}
+  return <ProblemPage id={id} />;
+};
 
 export default Page;

@@ -1,14 +1,11 @@
-import { cookies } from "next/headers";
+'use client'
 import { redirect } from "next/navigation";
 
-export const getProblem = async ({ id }: { id: string }) => {
-    const cookieStore = await cookies();
-    const cookieHeader = cookieStore.getAll().map(c => `${c.name}=${c.value}`).join("; ");
+export const getProblem = async (id:string) => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/problem/${id}`, {
         method: "GET",
-        headers: { Cookie: cookieHeader },
-        cache: "no-store",
+        credentials: "include",
     });
 
     if (res.status === 401) {

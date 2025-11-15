@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/header/Header";
 import FooterSec from "./components/footer/FooterSec";
 import UserProvider from "./components/hooks/provider/ContextApi";
+import MouseMove from "./components/Ui/MouseMove";
 
 
 const tiro_Bangla = Tiro_Bangla({
@@ -27,6 +28,7 @@ export default function RootLayout({
         className={`${tiro_Bangla.className} antialiased  `}
       >
 
+        <MouseMove/>
         <UserProvider >
           <Header />
           {children}
