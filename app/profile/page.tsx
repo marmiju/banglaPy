@@ -5,7 +5,7 @@ import logo from '@/public/logo2.png'
 import LoginUi from '../components/authentication/LoginUi'
 import { useUserContext } from '../components/hooks/provider/ContextApi'
 import LogOutBtn from '../components/authentication/LogOutBtn'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Badge } from '@/utils/types/types'
 import badge_bg from '@/public/badge_bg.png'
 import Modal from '../components/modal/Modal'
@@ -17,8 +17,8 @@ const ProfilePage = () => {
 
   const [isOpean, setisopen] = useState(false)
 
-  // 🟦 Fetch badges function
-  const fetchBadges = async () => {
+  //  Fetch badges function
+  const fetchBadges = useCallback(async () => {
     if (!user?.id) return
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/badge/${user.id}`)
@@ -27,18 +27,17 @@ const ProfilePage = () => {
     } catch (error) {
       console.error("Failed to load badges", error)
     }
-  }
+  }, [user?.id])
 
-  // 🟦 Load badges ONCE + auto refresh every 2 seconds
+
+  // Load badges ONCE + auto refresh every 2 seconds
   useEffect(() => {
-    fetchBadges() // first load
+    fetchBadges()
+    const interval = setInterval(fetchBadges, 2000)
 
-    const interval = setInterval(() => {
-      fetchBadges()
-    }, 2000)
+    return () => clearInterval(interval)
+  }, [fetchBadges])
 
-    return () => clearInterval(interval) // cleanup
-  }, [])
 
 
 
@@ -100,32 +99,25 @@ const ProfilePage = () => {
                 </div>
               </div>
             )}
-            <Modal open={isOpean} onClose={() => { setisopen(false) }}
-              children={
-                <div className='flex max-w-full justify-center gap-2 overflow-x-auto'>
-                  {
-                    badges && badges.map(badge => {
-                      return (
-                        <div key={badge.id} style={{ backgroundImage: `url(${badge_bg.src})` }}
-                        className='border-2 border-y-sky-700 border-x-purple-600 rounded-2xl'
-                        >
-                          <div className="grid relative  text-center  backdrop-blur-[1px] pt-10 pb-10 text-white  items-center justify-center p-2 rounded-[20px]">
-                            <h3 className='text-xl text-yellow-400 font-bold '>{badge.name}</h3>
-                            <p>{badge.description}</p>
+            <Modal open={isOpean} onClose={() => setisopen(false)}>
+              <div className='flex max-w-full justify-center gap-2 overflow-x-auto'>
+                {badges && badges.map(badge => (
+                  <div
+                    key={badge.id}
+                    style={{ backgroundImage: `url(${badge_bg.src})` }}
+                    className='border-2 border-y-sky-700 border-x-purple-600 rounded-2xl'
+                  >
+                    <div className="grid text-center backdrop-blur-[1px] pt-10 pb-10 text-white p-2 rounded-[20px]">
+                      <h3 className='text-xl text-yellow-400 font-bold'>{badge.name}</h3>
+                      <p>{badge.description}</p>
+                      <p className='text-gray-400'>{`লেভেলঃ ${badge.level}`}</p>
+                      <p className='text-gray-400'>{badge.category}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Modal>
 
-                            <p className='text-gray-400'>{`লেভেলঃ ${badge.level}`}</p>
-                            <p className='text-gray-400'>{badge.category}</p>
-
-                          </div>
-                        </div>
-                      )
-                    })
-
-                  }
-                </div>
-
-              }
-            />
           </div>
 
         </div>
