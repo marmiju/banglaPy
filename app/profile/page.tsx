@@ -5,7 +5,7 @@ import logo from '@/public/logo2.png'
 import LoginUi from '../components/authentication/LoginUi'
 import { useUserContext } from '../components/hooks/provider/ContextApi'
 import LogOutBtn from '../components/authentication/LogOutBtn'
-import { useCallback, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { Badge } from '@/utils/types/types'
 import badge_bg from '@/public/badge_bg.png'
 import Modal from '../components/modal/Modal'
@@ -18,25 +18,24 @@ const ProfilePage = () => {
   const [isOpean, setisopen] = useState(false)
 
   //  Fetch badges function
-  const fetchBadges = useCallback(async () => {
-    if (!user?.id) return
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/badge/${user.id}`)
-      const data = await res.json()
-      setBadges(data)
-    } catch (error) {
-      console.error("Failed to load badges", error)
-    }
-  }, [user?.id])
+
 
 
   // Load badges ONCE + auto refresh every 2 seconds
   useEffect(() => {
+    const fetchBadges = async () => {
+     if (!user?.id) return 
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/badge/${user.id}`)
+        const data = await res.json()
+        console.log("badget",data)
+        setBadges(data)
+      } catch (error) {
+        console.error("Failed to load badges", error)
+      }
+    }
     fetchBadges()
-    const interval = setInterval(fetchBadges, 2000)
-
-    return () => clearInterval(interval)
-  }, [fetchBadges])
+  }, [])
 
 
 
@@ -74,7 +73,7 @@ const ProfilePage = () => {
 
             {/* badge section */}
             {!badges ? (
-              <p className='text-white/60'>লোড হচ্ছে...</p>
+              <p className='text-white/60'>যান্ত্রিক ত্রুটি</p>
             ) : badges.length === 0 ? (
               <p className='text-white/60'>এখনও কোন ব্যাজ অর্জিত হয়নি 😔</p>
             ) : (
