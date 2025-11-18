@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { getProblems } from "@/utils/functions/getProblems";
-import { Submission } from "@/utils/types/userInterface";
+import { Submission } from "@/utils/types/types";
 
 interface Problem {
     id: string;

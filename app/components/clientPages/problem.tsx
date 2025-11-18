@@ -1,21 +1,24 @@
 // ClientPage.tsx
 'use client';
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@/app/components/modal/Modal";
 import ProblemSec from "@/app/components/problemSec/ProblemSec";
 import BanglaCodeRunner from "@/app/components/BanglaCodeRunner";
-import { Problem } from "@/utils/types/userInterface";
+import { Problem } from "@/utils/types/types";
 import { getProblem } from "@/utils/functions/GetProblem";
+import Solution from "../tabContent/Solution";
 
 interface Props {
     id: string
 }
 
 const ProblemPage = ({ id }: Props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [isloading, setIsloading] = useState(false);
-
+    const [index, setindex] = useState<number>(0)
     const [problem, setProblem] = useState<Problem | null>(null)
+
+    const tabcontent = [<Solution key={0} prob={problem!}/>]
 
     useEffect(() => {
 
@@ -42,14 +45,28 @@ const ProblemPage = ({ id }: Props) => {
                         ))}
                     </div>
 
-                </Modal><div className="max-w-[1280px] pb-10 mx-auto">
+                </Modal><div className="max-w-[1280px]  mx-auto">
                         <ProblemSec problem={problem} />
                         <BanglaCodeRunner problem={problem} />
-                       { problem.submissions?.filter(sub=> sub.isCorrect).length 
-                       && <button className=" text-white  rounded cursor-pointer underline p-2"
-                        onClick={() => { setOpen(true); }}>উত্তর দেখুন</button> }
-                    </div></>
+                        {/* {problem.submissions?.filter(sub => sub.isCorrect).length
+                            && <button className=" text-white  rounded cursor-pointer underline p-2"
+                                onClick={() => { setOpen(true); }}>উত্তর দেখুন</button>} */}
+                    </div>
+                    {/* additional section */}
+                    {/* tab bar */}
+                    <div className="flex p-2 mb-2 bg-slate-900/80 mx-auto max-w-[400px] flex-wrap overflow-x-auto whitespace-nowrap border justify-center items-center rounded-[14px] border-slate-200/60 mt-10 gap-4   text-white ">
+                        <button className={`${index === 0 ? 'bg-white text-black ' : ''} px-6 border rounded-[6px] border-white/20 cursor-pointer`} onClick={() => { setindex(0) }}>সমাধান</button>
+                       
+
+
+                    </div>
+
+                    <div className="max-w-6xl bg-slate-900/90 mx-auto border border-slate-600 p-4 rounded-2xl">
+                        {tabcontent[index]}
+                    </div>
+                </>
         }
+
         </>
     );
 };

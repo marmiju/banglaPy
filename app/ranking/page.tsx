@@ -1,6 +1,6 @@
 'use client';
 
-import { Score } from "@/utils/types/userInterface";
+import { Score } from "@/utils/types/types";
 import { useEffect, useMemo, useState } from "react";
 import logo2 from '../../public/logo2.png';
 import Image from "next/image";

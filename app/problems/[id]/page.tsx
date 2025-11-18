@@ -1,6 +1,5 @@
 // Server Component
 import ProblemPage from "@/app/components/clientPages/problem";
-import { getProblem } from "@/utils/functions/GetProblem";
 
 interface Props {
   params: { id: string };

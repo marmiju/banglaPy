@@ -1,6 +1,6 @@
 import React from 'react'
 import Markdown from '../markdown/Markdown'
-import { Problem } from '@/utils/types/userInterface'
+import { Problem } from '@/utils/types/types'
 
 
 const ProblemSec = ({ problem }: { problem: Problem }) => {

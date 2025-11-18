@@ -1,6 +1,6 @@
 "use client"
 import { redirect } from "next/navigation";
-import { Problem } from "../types/userInterface";
+import { Problem } from "../types/types";
 
 export const getProblems = async () => {
 

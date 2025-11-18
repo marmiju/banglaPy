@@ -33,10 +33,10 @@ const Header = () => {
       }
     }
     getMe()
-  }, [])
+  }, [user])
 
   return (
-    <header className="w-full   text-shadow-cyan-700-800  from-slate-900 backdrop-blur-sm text-white shadow-md  top-0 z-50">
+    <header className="w-full sticky   text-shadow-cyan-700-800  from-slate-900 backdrop-blur-sm text-white shadow-md  top-0 z-50">
       <div className="flex  justify-between items-center max-w-6xl mx-auto px-4 py-3">
         {/* Logo Section */}
 

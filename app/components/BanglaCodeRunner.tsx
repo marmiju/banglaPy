@@ -3,7 +3,7 @@ import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import { saveLocalStorege } from "@/utils/SaveCodeInLicalStore";
 import { useUserContext } from "./hooks/provider/ContextApi";
-import { Problem } from "@/utils/types/userInterface";
+import { Problem } from "@/utils/types/types";
 import { toast, ToastContainer } from "react-toastify";
 
 interface prpos {
