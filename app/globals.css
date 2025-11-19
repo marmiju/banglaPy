@@ -218,12 +218,21 @@ body {
   background: #64748b;
 }
 
+#mouse {
+  position: relative;
+  transform: rotate(20deg);
+  transform-origin: left center;
+  /* pivot left */
+}
 
-.mouse {
-  width: 120px;
-  pointer-events: none;
-  border-radius: 5%;
-  @apply border border-white/40 bg-white/5 backdrop-blur-[5px] flex items-center justify-center shadow-blue-400/10;
-
-  z-index: 100;
+#mouse::after {
+  content: "বাংলা-পাই";
+  position: absolute;
+  right: -36px;
+  top:-13px;
+  transform: translateX(50%) rotate(-20deg);
+  white-space: nowrap;
+  font-size: 14px;
+  color: white;
+  @apply backdrop-blur-2xl px-2  border-t border-white
 }

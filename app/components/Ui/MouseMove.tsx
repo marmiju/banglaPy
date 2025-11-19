@@ -6,8 +6,8 @@ export default function MouseMove() {
     const mouseDiv = document.getElementById("mouse");
     const moveMouse = (e: MouseEvent) => {
       if (mouseDiv) {
-        mouseDiv.style.left = `${e.pageX + 20}px`;
-        mouseDiv.style.top = `${e.pageY + 20}px`;
+        mouseDiv.style.left = `${e.pageX+10 }px`;
+        mouseDiv.style.top = `${e.pageY+20 }px`;
       }
     };
     window.addEventListener("mousemove", moveMouse);
@@ -17,8 +17,7 @@ export default function MouseMove() {
 
   return (
     <div>
-      <div >
-        বাংলা-পাই
+      <div id="mouse" className="absolute z-100 hidden lg:block border-b w-10 " >
       </div>
     </div>
   );

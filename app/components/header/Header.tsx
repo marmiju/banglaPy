@@ -33,7 +33,7 @@ const Header = () => {
       }
     }
     getMe()
-  }, [user])
+  }, [])
 
   return (
     <header className="w-full sticky   text-shadow-cyan-700-800  from-slate-900 backdrop-blur-sm text-white shadow-md  top-0 z-50">

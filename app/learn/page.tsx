@@ -26,7 +26,7 @@ const Page = () => {
     <>
 
       {
-        !resources ? <div>Loading</div>
+        !resources ? <div>Loading..........................</div>
           : <div className="min-h-screen w-full pb-10 max-w-[1200px] mx-auto px-4">
 
             {/* ---------- MOBILE MENU BUTTON ---------- */}

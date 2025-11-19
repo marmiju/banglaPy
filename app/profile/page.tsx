@@ -5,7 +5,7 @@ import logo from '@/public/logo2.png'
 import LoginUi from '../components/authentication/LoginUi'
 import { useUserContext } from '../components/hooks/provider/ContextApi'
 import LogOutBtn from '../components/authentication/LogOutBtn'
-import {  useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Badge } from '@/utils/types/types'
 import badge_bg from '@/public/badge_bg.png'
 import Modal from '../components/modal/Modal'
@@ -18,24 +18,32 @@ const ProfilePage = () => {
   const [isOpean, setisopen] = useState(false)
 
   //  Fetch badges function
-
-
-
-  // Load badges ONCE + auto refresh every 2 seconds
-  useEffect(() => {
-    const fetchBadges = async () => {
-     if (!user?.id) return 
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/badge/${user.id}`)
-        const data = await res.json()
-        console.log("badget",data)
-        setBadges(data)
-      } catch (error) {
-        console.error("Failed to load badges", error)
-      }
+  console.log("profile User", user)
+  console.log("User id from profile", user?.id)
+  // Fetch badges
+  const fetchBadges = async () => {
+    if (!user?.id) return;
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/badge/${user.id}`, {
+        cache: 'no-store'
+      })
+      const data = await res.json()
+      setBadges(data)
+    } catch (error) {
+      console.error("Failed to load badges", error)
     }
-    fetchBadges()
-  }, [])
+  }
+
+  // ✔️ Call only after redirect + 2 seconds delay
+  useEffect(() => {
+    if (!user?.id) return;
+
+    const timer = setTimeout(() => {
+      fetchBadges();
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [user]);
 
 
 
@@ -73,13 +81,16 @@ const ProfilePage = () => {
 
             {/* badge section */}
             {!badges ? (
-              <p className='text-white/60'>যান্ত্রিক ত্রুটি</p>
+              <p className='text-white/60'>লোডিং হচ্ছে</p>
             ) : badges.length === 0 ? (
               <p className='text-white/60'>এখনও কোন ব্যাজ অর্জিত হয়নি 😔</p>
             ) : (
-              <div style={{
-                backgroundImage: `url(${badge_bg.src})`
-              }}>
+              <div
+                className='max-w-[200px]'
+                style={{
+                  backgroundImage: `url(${badge_bg.src})`
+
+                }}>
                 <div
                   className="grid relative max-w-[200px] text-center border-2 backdrop-blur-[1px]  pt-10 pb-10 text-white border-purple-600 items-center justify-center p-2 rounded-[20px]">
 
@@ -99,23 +110,35 @@ const ProfilePage = () => {
               </div>
             )}
             <Modal open={isOpean} onClose={() => setisopen(false)}>
-              <div className='flex max-w-full justify-center gap-2 overflow-x-auto'>
+              <div
+                className="
+      grid
+      grid-cols-1
+      sm:grid-cols-2
+      md:grid-cols-3
+      gap-4
+      max-h-[70vh]
+      overflow-y-auto
+      p-4
+    "
+              >
                 {badges && badges.map(badge => (
                   <div
                     key={badge.id}
                     style={{ backgroundImage: `url(${badge_bg.src})` }}
-                    className='border-2 border-y-sky-700 border-x-purple-600 rounded-2xl'
+                    className="border-2 border-y-sky-700 border-x-purple-600 rounded-2xl"
                   >
                     <div className="grid text-center backdrop-blur-[1px] pt-10 pb-10 text-white p-2 rounded-[20px]">
-                      <h3 className='text-xl text-yellow-400 font-bold'>{badge.name}</h3>
+                      <h3 className="text-xl text-yellow-400 font-bold truncate">{badge.name}</h3>
                       <p>{badge.description}</p>
-                      <p className='text-gray-400'>{`লেভেলঃ ${badge.level}`}</p>
-                      <p className='text-gray-400'>{badge.category}</p>
+                      <p className="text-gray-400">লেভেলঃ {badge.level}</p>
+                      <p className="text-gray-400">{badge.category}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </Modal>
+
 
           </div>
 
