@@ -2,7 +2,7 @@
 import { Hind_Siliguri } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo2 from '@/public/logo2.png'
 
 
@@ -17,21 +17,23 @@ const hindsiliguri = Hind_Siliguri({
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { user, setUser } = useUserContext();
+  const { user, setUser, setLoading } = useUserContext();
 
   const toggleMenu = () => setOpen(!open);
 
   useEffect(() => {
     const getMe = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/me`, {
+      setLoading(true)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/me/`, {
         method: 'GET',
         credentials: 'include',
       })
-      if (res.status === 200) {
-        const data = await res.json()
-        console.log("me:",data)
-        setUser(data)
-      }
+
+      const data = await res.json()
+      console.log("me:", data)
+      setUser(data)
+
+      setLoading(false)
     }
     getMe()
   }, [])
@@ -40,7 +42,6 @@ const Header = () => {
     <header className="w-full sticky   text-shadow-cyan-700-800  from-slate-900 backdrop-blur-sm text-white shadow-md  top-0 z-50">
       <div className="flex  justify-between items-center max-w-6xl mx-auto px-4 py-3">
         {/* Logo Section */}
-
 
         <Link href={'/'} className="flex  top-0 flex-row items-center">
           <Image className="w-12 h-12 " width={100} height={100}
@@ -57,12 +58,26 @@ const Header = () => {
           <Link href="/game" className="hover:text-blue-200 transition">গেম</Link>
           <Link href="/problems" className="hover:text-blue-200 transition">চ্যালেঞ্জ</Link>
           <Link href="/ranking" className="hover:text-blue-200 transition">লিডারবোর্ড</Link>
-          <Link href={'/profile'}>
-            {/* profile */}
-            <Image
-              className=" sticky top-5 right-5  bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
-              src={user?.profile_picture || logo2.src} alt="profilephoto" height={40} width={40} />
-          </Link>
+
+          { user?.username ?
+            <Link href={`/u/${user.id}`}>
+              <Image
+                className="sticky top-5 right-5 bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
+                src={user.profile_picture}
+                alt="profilephoto"
+                height={40}
+                width={40}
+              />
+            </Link>
+            :
+            <Link 
+            className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
+            href={'/auth/login'}>লগইন</Link>
+
+
+          }
+
+
 
         </nav>
 

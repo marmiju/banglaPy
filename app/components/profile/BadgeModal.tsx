@@ -9,6 +9,7 @@ export default function BadgeModal({
   onClose,
   badges
 }: {
+  
   open: boolean
   onClose: () => void
   badges: Badge[]
