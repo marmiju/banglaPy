@@ -16,7 +16,7 @@ const LogOutBtn = () => {
         }
         alert('logOut failed')
     }
-    return (<button className='bg-gradient-to-br from-purple-600 to-pink-700 rounded px-4 py-1 hover:bg-gradient-to-bl hover:scale-98  transition-all duration-300 cursor-pointer ' onClick={logout}>Log out</button>)
+    return (<button className='bg-gradient-to-br w-full from-purple-600 to-pink-700 rounded px-4 py-1 hover:bg-gradient-to-bl hover:scale-98  transition-all duration-300 cursor-pointer ' onClick={logout}>Log out</button>)
 }
 
 export default LogOutBtn

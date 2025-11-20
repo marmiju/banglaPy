@@ -1,15 +1,9 @@
 'use client'
+import { UserType } from "@/utils/types/types";
 import { createContext, useState, ReactNode, useContext } from "react";
 
 
-// Context shape
-type UserType = {
-  id: string;
-  username?: string;
-  email?: string;
-  googleId: string;
-  profile_picture?: string;
-};
+
 
 type UserContextType = {
   user: UserType | null;

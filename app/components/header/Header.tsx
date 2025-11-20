@@ -29,6 +29,7 @@ const Header = () => {
       })
       if (res.status === 200) {
         const data = await res.json()
+        console.log("me:",data)
         setUser(data)
       }
     }

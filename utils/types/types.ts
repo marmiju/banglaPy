@@ -5,6 +5,10 @@ export interface UserType {
   username: string,
   profile_picture: string
   submissions?: Submission[];
+  badge?: Badge[]
+  activities?: Activity[]
+  learned?: Learned[]
+  scores?: Score[]
 }
 
 export interface Problem {
@@ -68,6 +72,19 @@ export interface Badge {
   userId: string;
   createdAt: string;        // ISO date string
   updatedAt: string;        // ISO date string
+}
+
+export interface Activity {
+  id: string;
+  userId: string;
+  date: string | Date;
+  count: number;
+}
+
+export interface Learned {
+  id: string;
+  resId: number;
+  userId: string;
 }
 
 
