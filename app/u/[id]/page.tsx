@@ -16,9 +16,9 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
 
   const { user, loading } = useUserContext()
 
-  const {id} = params
+  const { id } = params
   const isOwner = user?.id === id
-  if(isOwner) alert('owner')
+
 
   const [open, setOpen] = useState(false)
   const [badge, setBadge] = useState<Badge[] | null>(null)
@@ -32,7 +32,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
       <div className="max-w-[1280px] grid grid-cols-3 md:grid-cols-12 gap-4 mx-auto p-4 text-white">
 
         <div className="col-span-3 space-y-6 flex flex-col p-4 rounded-xl bg-slate-900 items-center">
-<ProfileSection id={id} isOwner={isOwner} />
+          <ProfileSection id={id} isOwner={isOwner} />
           <BadgePreview userId={id} openModal={() => setOpen(true)} badge={badge || []} setBadge={setBadge}
           />
         </div>
@@ -44,7 +44,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
 
         </div>
 
-        <BadgeModal open={open} onClose={() => setOpen(false)} badges={ badge|| []} />
+        <BadgeModal open={open} onClose={() => setOpen(false)} badges={badge || []} />
       </div>
     </Suspense>
 
