@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useUserContext } from '@/app/components/hooks/provider/ContextApi'
 import LoginUi from '@/app/components/authentication/LoginUi'
 
@@ -11,6 +11,9 @@ import BadgeModal from '../../components/profile/BadgeModal'
 import ContributionGraph from '../../components/profile/ContributionGraph'
 import Loading from '../../loading'
 import { Badge } from '@/utils/types/types'
+import ScoreSection from '@/app/components/profile/ScoreSection'
+import SubmissionsSection from '@/app/components/profile/SubmissionsSection'
+import LearnedSection from '@/app/components/profile/LearnedSection'
 
 export default function ProfilePage({ params }: { params: { id: string } }) {
 
@@ -37,11 +40,20 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
           />
         </div>
 
-        <div className="col-span-3 md:col-span-9">
-          <div className="col-span-3 md:col-span-9">
-            <ContributionGraph userId={id} />
-          </div>
+        <div className="col-span-3 md:col-span-9 space-y-2">
+          <div className=' grid grid-cols-1 md:grid-cols-3 gap-2'>
+            <div className=' col-span-1 rounded'>
+              <ScoreSection userId={id} />
+            </div>
+            <div className='col-span-2'>
+              <LearnedSection userId={id}/>
+            </div>
 
+          </div>
+          <ContributionGraph userId={id} />
+        </div>
+        <div className='w-full col-span-3 md:col-span-12'>
+          <SubmissionsSection userId={id} />
         </div>
 
         <BadgeModal open={open} onClose={() => setOpen(false)} badges={badge || []} />

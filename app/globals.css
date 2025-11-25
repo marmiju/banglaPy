@@ -222,6 +222,8 @@ body {
   position: relative;
   transform: rotate(20deg);
   transform-origin: left center;
+  box-shadow: inset #020718;
+  background: #000;
   /* pivot left */
 }
 

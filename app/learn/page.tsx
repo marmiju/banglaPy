@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import LWV from "../components/lwv/LWV";
 import { Resources } from "@/utils/types/types";
 import { GetRes } from "@/utils/functions/GetRes";
+import Loading from "../loading";
 
 const Page = () => {
   const [resources, setresources] = useState<Resources[] | null>(null);
@@ -26,7 +27,7 @@ const Page = () => {
     <>
 
       {
-        !resources ? <div>Loading..........................</div>
+        !resources ? <Loading/>
           : <div className="min-h-screen w-full pb-10 max-w-[1200px] mx-auto px-4">
 
             {/* ---------- MOBILE MENU BUTTON ---------- */}
@@ -70,7 +71,7 @@ const Page = () => {
             </div>
 
             {/* ---------- MAIN CONTENT ---------- */}
-            <div className="max-w-6xl mx-auto p-4">
+            <section id={resources[indx].topic || ''} className="max-w-6xl mx-auto p-4">
               {resources && (
                 <LWV
                   resources_id={resources[indx].id || 0}
@@ -80,7 +81,7 @@ const Page = () => {
                   quiz={resources[indx].quizs}
                 />
               )}
-            </div>
+            </section>
 
 
           </div>

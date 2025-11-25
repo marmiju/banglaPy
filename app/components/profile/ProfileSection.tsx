@@ -28,7 +28,7 @@ export default function ProfileSection({ id, isOwner }: { id: string, isOwner: b
         getMe()
     }, [])
 
-    if (isLoading) return <>wait...</>
+    if (isLoading) return <BioSkeleton />
     return (
         <div className="flex flex-col items-center justify-center  gap-3">
             <Image
@@ -45,6 +45,23 @@ export default function ProfileSection({ id, isOwner }: { id: string, isOwner: b
             </div>
 
             {isOwner && <LogOutBtn />}
+        </div>
+    )
+}
+
+
+export  const BioSkeleton = () => {
+    return (
+        <div className="flex flex-col animate-pulse items-center justify-center  gap-3">
+           <div className='w-24 h-24 bg-slate-800'>
+
+           </div>
+
+            <div className="text-cente space-y-2 ">
+                <div className="text-[26px] h-3 p-4 bg-slate-800 font-bold w-[200px]"></div>
+                <div className="text-[16px] p-2 h-6 bg-slate-800 text-white/80 w-[200px]"></div>
+            </div>
+
         </div>
     )
 }

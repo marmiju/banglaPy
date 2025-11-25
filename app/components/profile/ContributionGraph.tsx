@@ -22,8 +22,12 @@ export default function ContributionGraph({ userId }: { userId: string }) {
     const getActivity = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/activities/${userId}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/activities/${userId}`,{
+          method:'GET',
+          cache:'no-store'
+        });
         const json = await res.json();
+        console.log("json",json)
         setData(json || []);
       } catch (err) {
         console.error("Activity Fetch Error:", err);
@@ -98,10 +102,11 @@ export default function ContributionGraph({ userId }: { userId: string }) {
 
   const getColor = (count: number) => {
     if (count === 0) return "bg-gray-800";
-    if (count <= 2) return "bg-[#A8E6CF]";
-    if (count <= 4) return "bg-[#DCEDC1]";
-    if (count <= 7) return "bg-[#FFD3B6]";
-    return "bg-[#FFAAA5]";
+    if (count == 1) return "bg-green-800";
+    if (count <= 2) return "bg-green-700";
+    if (count <= 4) return "bg-green-600";
+    if (count <= 7) return "bg-green-400";
+    return "bg-green-200";
   };
 
   return (

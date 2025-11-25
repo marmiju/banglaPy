@@ -85,6 +85,7 @@ export interface Learned {
   id: string;
   resId: number;
   userId: string;
+  res: Resources
 }
 
 

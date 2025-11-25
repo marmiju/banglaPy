@@ -92,11 +92,23 @@ const Header = () => {
           >
             {open ? <RxCrossCircled size={28} /> : <BiMenu size={28} />}
           </button>
-          <Link href={'/profile'}>
-            <Image
-              className="   bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
-              src={user?.profile_picture || logo2.src} alt="profilephoto" height={32} width={32} />
-          </Link>
+         { user?.username ?
+            <Link href={`/u/${user.id}`}>
+              <Image
+                className="sticky top-5 right-5 bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
+                src={user.profile_picture}
+                alt="profilephoto"
+                height={40}
+                width={40}
+              />
+            </Link>
+            :
+            <Link 
+            className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
+            href={'/auth/login'}>লগইন</Link>
+
+
+          }
         </div>
       </div>
 
