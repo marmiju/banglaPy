@@ -7,6 +7,7 @@ import BanglaCodeRunner from "@/app/components/BanglaCodeRunner";
 import { Problem } from "@/utils/types/types";
 import { getProblem } from "@/utils/functions/GetProblem";
 import Solution from "../tabContent/Solution";
+import Loading from "@/app/loading";
 
 interface Props {
     id: string
@@ -33,7 +34,7 @@ const ProblemPage = ({ id }: Props) => {
 
     return (
         <>{
-            isloading ? <div>Loading...</div>
+            isloading ? <Loading/>
                 : problem && <><Modal open={open} onClose={() => setOpen(false)}>
                     <h2 className="text-2xl font-bold mb-4">উত্তর সমুহ</h2>
 
@@ -54,14 +55,12 @@ const ProblemPage = ({ id }: Props) => {
                     </div>
                     {/* additional section */}
                     {/* tab bar */}
-                    <div className="flex p-2 mb-2 bg-slate-900/80 mx-auto max-w-[400px] flex-wrap overflow-x-auto whitespace-nowrap border justify-center items-center rounded-[14px] border-slate-200/60 mt-10 gap-4   text-white ">
+                    <div className="flex p-2 mb-2  mx-auto max-w-[400px] flex-wrap overflow-x-auto whitespace-nowrap  justify-center items-center rounded-[14px] border-slate-200/60 mt-10 gap-4   text-white ">
                         <button className={`${index === 0 ? 'bg-white text-black ' : ''} px-6 border rounded-[6px] border-white/20 cursor-pointer`} onClick={() => { setindex(0) }}>সমাধান</button>
-                       
-
 
                     </div>
 
-                    <div className="max-w-6xl bg-slate-900/90 mx-auto border border-slate-600 p-4 rounded-2xl">
+                    <div className="max-w-6xl mb-8 bg-slate-900/90 mx-auto border border-slate-600 p-4 rounded-2xl">
                         {tabcontent[index]}
                     </div>
                 </>

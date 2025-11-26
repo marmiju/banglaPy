@@ -5,8 +5,9 @@ interface Props {
   params: { id: string };
 }
 
+
 const Page = async ({ params }: Props) => {
-    const { id } = params;
+  const { id } = params;
 
 
   return <ProblemPage id={id} />;

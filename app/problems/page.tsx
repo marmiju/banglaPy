@@ -30,7 +30,7 @@ const ProblemsPage = () => {
     }
 
     return (
-        <div className="max-w-[90%] mx-auto flex flex-col">
+        <div className="max-w-[90%] mx-auto flex flex-col pb-4">
             <p className="text-2xl my-6">সমস্যার তালিকাঃ</p>
 
             {problems.map((prob, index) => (

@@ -220,21 +220,14 @@ body {
 
 #mouse {
   position: relative;
-  transform: rotate(20deg);
-  transform-origin: left center;
-  box-shadow: inset #020718;
-  background: #000;
-  /* pivot left */
 }
 
 #mouse::after {
-  content: "বাংলা-পাই";
+  content: "বাংলা পাই";
   position: absolute;
-  right: -36px;
-  top:-13px;
-  transform: translateX(50%) rotate(-20deg);
-  white-space: nowrap;
-  font-size: 14px;
+  white-space: wrap;
+  top: 0;
+  transform: translate(-50%);
   color: white;
-  @apply backdrop-blur-2xl px-2  border-t border-white
+  @apply backdrop-blur-sm px-2 text-[10px]  border-t border-b border-white rounded-full w-10 h-10 content-center text-center 
 }

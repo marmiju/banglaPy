@@ -1,6 +1,7 @@
 'use client'
 import { Quiz } from '@/utils/types/types'
 import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 
 
 
@@ -68,13 +69,14 @@ const QuizSection = ({ quiz, res_id }: { quiz: Quiz[], apiEndpoint?: string, res
 
     const result = await res.json()
 
-    alert(result.msg)
+    toast(result.msg)
 
   }
 
 
   return (
     <div className="mt-6 bg-slate-900 text-white p-4 rounded-2xl shadow">
+      <ToastContainer/>
       {quiz.map((q, i) => (
         <div key={i} className="mb-4">
           <p className="font-medium mb-2">{i + 1}. {q.question}</p>
