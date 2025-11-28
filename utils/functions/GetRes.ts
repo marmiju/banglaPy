@@ -1,6 +1,10 @@
 export const GetRes = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/resoureces`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/resoureces`,{
+            next:{
+                revalidate:10
+            }
+        });
         const result = await res.json()
         console.log(result)
         return result

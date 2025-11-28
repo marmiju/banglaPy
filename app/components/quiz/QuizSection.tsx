@@ -75,7 +75,7 @@ const QuizSection = ({ quiz, res_id }: { quiz: Quiz[], apiEndpoint?: string, res
 
 
   return (
-    <div className="mt-6 bg-slate-900 text-white p-4 rounded-2xl shadow">
+    <div className="mt-6  text-white p-4 rounded-2xl shadow">
       <ToastContainer/>
       {quiz.map((q, i) => (
         <div key={i} className="mb-4">
@@ -111,13 +111,13 @@ const QuizSection = ({ quiz, res_id }: { quiz: Quiz[], apiEndpoint?: string, res
       ))}
 
       {quiz && (
-        <div className="mt-4">
+        <div className="mt-2 w-full flex justify-center">
           <button
             onClick={handleSubmit}
             disabled={submitting}
-            className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded disabled:opacity-50"
+            className="bg-white/90 w-full text-black/90 hover:bg-white hover:text-black cursor-pointer px-4 py-2 rounded disabled:opacity-50"
           >
-            {submitting ? 'সাবমিট হচ্ছে...' : 'সাবমিট'}
+            {submitting ? 'সাবমিট হচ্ছে...' : 'লার্নিং শেষ করুন'}
           </button>
         </div>
       )}

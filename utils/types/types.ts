@@ -33,6 +33,7 @@ export interface Submission {
   score: number;
   userId: string;
   user?: UserType;
+  problem?:Problem
 }
 
 export interface Score {

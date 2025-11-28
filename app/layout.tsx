@@ -28,7 +28,7 @@ export default function RootLayout({
         className={`${tiro_Bangla.className} antialiased  `}
       >
 
-        <MouseMove/>
+        <MouseMove />
         <UserProvider >
           <Header />
           {children}

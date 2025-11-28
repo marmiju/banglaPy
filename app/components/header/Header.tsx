@@ -59,7 +59,7 @@ const Header = () => {
           <Link href="/problems" className="hover:text-blue-200 transition">চ্যালেঞ্জ</Link>
           <Link href="/ranking" className="hover:text-blue-200 transition">লিডারবোর্ড</Link>
 
-          { user?.username ?
+          {user?.username ?
             <Link href={`/u/${user.id}`}>
               <Image
                 className="sticky top-5 right-5 bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
@@ -70,9 +70,9 @@ const Header = () => {
               />
             </Link>
             :
-            <Link 
-            className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
-            href={'/auth/login'}>লগইন</Link>
+            <Link
+              className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
+              href={'/auth/login'}>লগইন</Link>
 
 
           }
@@ -92,7 +92,7 @@ const Header = () => {
           >
             {open ? <RxCrossCircled size={28} /> : <BiMenu size={28} />}
           </button>
-         { user?.username ?
+          {user?.username ?
             <Link href={`/u/${user.id}`}>
               <Image
                 className="sticky top-5 right-5 bg-gradient-to-bl from-blue-700 to-pink-600 p-[2px] rounded-full"
@@ -103,9 +103,9 @@ const Header = () => {
               />
             </Link>
             :
-            <Link 
-            className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
-            href={'/auth/login'}>লগইন</Link>
+            <Link
+              className="bg-gradient-to-bl from-purple-600 to-pink-700 px-2 py-1 rounded"
+              href={'/auth/login'}>লগইন</Link>
 
 
           }

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import { saveLocalStorege } from "@/utils/SaveCodeInLicalStore";
 import { useUserContext } from "./hooks/provider/ContextApi";
@@ -14,12 +14,16 @@ interface prpos {
 }
 
 export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
-  const [banglaCode, setBanglaCode] = useState(src_code);
+  const [banglaCode, setBanglaCode] = useState<string>(src_code!);
   const [pythonCode, setPythonCode] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [stderr, setstderr] = useState("");
+
+  useEffect(() => {
+    setBanglaCode(src_code || "");
+  }, [src_code]);
 
   const { user } = useUserContext()
 
@@ -43,7 +47,6 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: banglaCode, input: problem?.sampleInput, userId: user.id, problemId: problem?.id }),
       });
-
 
 
       const data = await res.json();
@@ -81,7 +84,6 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
 
 
     try {
-
       if (!banglaCode) return
 
 
@@ -136,7 +138,7 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
           language="python"
           theme="vs-dark"
           value={banglaCode}
-          onChange={(value) => setBanglaCode(value || "")}
+          onChange={(value) => setBanglaCode(value!)}
           options={{
             fontSize: 14,
             minimap: { enabled: false },
@@ -149,7 +151,7 @@ export default function BanglaCodeRunner({ src_code, problem, height }: prpos) {
           loading ? <div className="text-center text-black bg-white/80  p-2">আপেক্ষা করুন</div>
             : <div className="w-full flex flex-col md:flex-row ">
               <button disabled={loading} onClick={runCode} className={`bg-gradient-to-br w-full bg-white text-black px-4 cursor-pointer py-2 `}>কোড রান করুন</button>
-             {problem && <button disabled={loading} onClick={submitcode} className={`bg-gradient-to-br w-full bg-green-600 text-white px-4 cursor-pointer py-2 `}>সাবমিট করুন</button>}
+              {problem && <button disabled={loading} onClick={submitcode} className={`bg-gradient-to-br w-full bg-green-600 text-white px-4 cursor-pointer py-2 `}>সাবমিট করুন</button>}
 
             </div>
         }

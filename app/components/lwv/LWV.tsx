@@ -16,7 +16,7 @@ interface props {
 
 
 const LWV = ({ source, code, explaination, quiz, resources_id }: props) => {
-  console.log(quiz, resources_id)
+  console.log("code", code)
   return (
     <div>
       <Markdown content={explaination} />

@@ -10,6 +10,7 @@ const Page = () => {
   const [open, setOpen] = useState(false);
   const [indx, setIndx] = useState(0)
 
+
   const handleClick = (id: number) => {
     setIndx(id)
     setOpen(false);
@@ -74,7 +75,7 @@ const Page = () => {
             <section id={resources[indx].topic || ''} className="max-w-6xl mx-auto p-4">
               {resources && (
                 <LWV
-                  resources_id={resources[indx].id || 0}
+                  resources_id={resources[indx].id }
                   explaination={resources[indx].desc}
                   source={resources[indx].source}
                   code={resources[indx].code}
